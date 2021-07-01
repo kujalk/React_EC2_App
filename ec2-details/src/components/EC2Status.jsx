@@ -71,7 +71,7 @@ class EC2View extends Component {
                     <Collapsible trigger={"Power " + ec2_state + " EC2 => "+ this.countEC2(ec2_state)} >
                     
                         <table className="table table-bordered">
-                            <thead key="{ec2_state}-thead">
+                            <thead>
                                 <tr className={"table-" + this.getBorderColor(ec2_state)}>
                                 <th>Region</th>
                                 <th>Availability Zone</th>
