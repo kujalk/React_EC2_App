@@ -6,7 +6,7 @@
 - State running will be mapped to 'On'; State stopped/terminated will be mapped to 'Off'; All other remaining state will be mapped to 'Pending' 
 '''
 
-from config import AWS_REGIONS,OUT_JSON_PATH
+from config import AWS_REGIONS,OUT_JSON_PATH,SCHEDULE_INTERVAL
 import boto3
 import os
 import logging
@@ -100,7 +100,7 @@ def get_ec2_details():
 
 #Start
 get_ec2_details()
-schedule.every(2).minutes.do(get_ec2_details)
+schedule.every(SCHEDULE_INTERVAL).minutes.do(get_ec2_details)
 
 while (True):
     schedule.run_pending()

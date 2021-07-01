@@ -1,12 +1,12 @@
 {
-    "Date": "Wed 06-30-2021 14:27:52",
+    "Date": "Wed 06-30-2021 01:15:52",
     "Details": [
         {
             "Region": "ap-southeast-1",
             "ID": "i-0d5d52e9997a30d46",
             "Size": "t2.micro",
             "AZ": "ap-southeast-1a",
-            "State": "On"
+            "State": "Off"
         }
     ]
 }

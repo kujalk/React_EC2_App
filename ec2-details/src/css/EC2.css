@@ -12,7 +12,7 @@
 
 .Collapsible__trigger:after {
       font-family: 'FontAwesome';
-      content: '\f107';
+      content: '\f106';
       position: absolute;
       right: 10px;
       top: 10px;
