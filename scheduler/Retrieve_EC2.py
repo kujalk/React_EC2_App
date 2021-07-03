@@ -43,25 +43,22 @@ def prepare_json(final_data):
 def get_ec2_details():
     #Main function
     try:
-
-        if (os.getenv("server") == "local"):
-            logger.info("Server is local therefore, getting credentials from env variable")
-            aws_access_key_id = os.getenv("aws_access_key_id")
-            aws_secret_access_key = os.getenv("aws_secret_access_key")
-
-        elif(os.getenv("server") == "aws"):
-            logger.info("Server is aws, therefore will fetch credentials from role attached")
-
-        else:
-            raise Exception ("server value is wrong. Only local and aws is allowed")
             
         all_data = []
 
         for region in AWS_REGIONS:
 
+            if (os.getenv("server") == "local"):
+                ec2client = boto3.client('ec2', aws_access_key_id=os.getenv("aws_access_key_id"), aws_secret_access_key=os.getenv("aws_secret_access_key"),region_name=region)
+
+            elif(os.getenv("server") == "aws"):
+                ec2client = boto3.client('ec2',region_name=region)
+
+            else:
+                raise Exception ("server value is wrong. Only local and aws is allowed")
+
             logger.info(f"Working on Region : {region}")
-            ec2client = boto3.client('ec2', aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key,region_name=region)
-        
+            
             response = ec2client.describe_instances()
 
             if(len(response['Reservations']) > 0):
